@@ -3,6 +3,7 @@ package dbms.homework.business.abstracts;
 import dbms.homework.core.utilities.result.DataResult;
 import dbms.homework.core.utilities.result.Result;
 import dbms.homework.entities.concretes.Computer;
+import dbms.homework.entities.dtos.ComputerAddDto;
 
 import java.util.List;
 
@@ -19,5 +20,7 @@ public interface ComputerService {
     DataResult<List<Computer>> getByModelNameContains(String ComputerModelName);
 
     DataResult<List<Computer>> getAll(int pageNo,int pageSize);
+
+    Result add(ComputerAddDto computerAddDto);
 
 }

@@ -7,6 +7,8 @@ import dbms.homework.core.utilities.result.SuccessDataResult;
 import dbms.homework.core.utilities.result.SuccessResult;
 import dbms.homework.dataAccess.abstracts.ComputerDao;
 import dbms.homework.entities.concretes.Computer;
+import dbms.homework.entities.concretes.Customer;
+import dbms.homework.entities.dtos.ComputerAddDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -60,5 +62,14 @@ public class ComputerManager implements ComputerService {
     public DataResult<List<Computer>> getAll(int pageNo, int pageSize) {
         Pageable pageable = PageRequest.of(pageNo-1, pageSize);
        return new SuccessDataResult<>(this.computerDao.findAll(pageable).getContent());
+    }
+
+    @Override
+    public Result add(ComputerAddDto computerAddDto) {
+       Computer computer = new Computer(0,computerAddDto.getModelName(), computerAddDto.getManufacturerName(), computerAddDto.getTypeOfPc(),
+               computerAddDto.getSerialNumber(), new Customer(computerAddDto.getCustomerId(),null,null,null,null,null,null),null,null
+       );
+
+       return new SuccessDataResult<Computer>(this.computerDao.save(computer),"Added");
     }
 }

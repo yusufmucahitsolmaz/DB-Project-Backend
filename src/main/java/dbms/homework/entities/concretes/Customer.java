@@ -40,7 +40,7 @@ public class Customer {
     private String customerLastName;
 
 
-    /*@OneToMany(mappedBy = "customer")
+/*@OneToMany(mappedBy = "customer")
     private List<Computer> computers;*/
 
     @OneToMany(mappedBy = "customer")

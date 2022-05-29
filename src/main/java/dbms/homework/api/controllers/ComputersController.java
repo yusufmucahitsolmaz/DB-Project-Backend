@@ -4,6 +4,7 @@ import dbms.homework.business.abstracts.ComputerService;
 import dbms.homework.core.utilities.result.DataResult;
 import dbms.homework.core.utilities.result.Result;
 import dbms.homework.entities.concretes.Computer;
+import dbms.homework.entities.dtos.ComputerAddDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,4 +46,11 @@ public class ComputersController {
     DataResult<List<Computer>> getAll(int pageNo,int pageSize){
         return this.computerService.getAll(pageNo,pageSize);
     }
+
+    @PostMapping("/add/computer")
+    public Result add(@RequestBody ComputerAddDto computerAddDto)
+    {
+        return this.computerService.add(computerAddDto);
+    }
+
 }
