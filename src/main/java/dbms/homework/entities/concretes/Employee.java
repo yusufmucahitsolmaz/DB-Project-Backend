@@ -23,7 +23,18 @@ public class Employee extends Person{
     private String employeePassword;
 
 
-    @ManyToMany(cascade = {
+    @ManyToOne()
+    @JoinColumn(name = "employee_pc_service_fk")
+    private PcService pcService;
+
+    @ManyToOne()
+    @JoinColumn(name = "employee_computer_fk")
+    private Computer computer;
+
+
+
+
+    /*@ManyToMany(cascade = {
             CascadeType.ALL
     })
     @JoinTable(
@@ -35,7 +46,7 @@ public class Employee extends Person{
                     @JoinColumn(name = "pcservice_id")
             }
     )
-    Set< PcService > pcServiceSet = new HashSet< PcService >();
+    Set< PcService > pcServiceSet = new HashSet< PcService >();*/
 
   /*  @JoinTable(
             name = "employee_computer_mm",
@@ -47,4 +58,7 @@ public class Employee extends Person{
             }
     )
     Set <Computer> computerSet = new HashSet<Computer>();*/
+
+
+
 }

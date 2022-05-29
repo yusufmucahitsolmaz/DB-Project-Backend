@@ -1,5 +1,6 @@
 package dbms.homework.entities.concretes;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,6 +14,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","pcServices","employees"})
 @Table(name = "computer")
 public class Computer {
 
@@ -36,8 +38,18 @@ public class Computer {
    /*@ManyToOne()
    private Customer customer;*/
 
-   @OneToMany(mappedBy = "computer")
-   private List<PcService> pcServices;
+   /*@OneToMany(mappedBy = "computer")
+   private List<PcService> pcServices;*/
+
+    @ManyToOne()
+    @JoinColumn(name = "computer_customer_fk")
+    private Customer customer;
+
+    @OneToMany(mappedBy = "computer")
+    private List<PcService> pcServices;
+
+    @OneToMany(mappedBy = "computer")
+    private List<Employee> employees;
 
 
 }

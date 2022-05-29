@@ -26,7 +26,9 @@ public class TypeOfService {
     private String typeOfServicePrice;
 
     @ManyToOne()
-    @JoinColumn(name = "service_id")
+    @JoinColumn(name = "type_of_service_pc_service_fk")
     private PcService pcService;
+
+
 
 }
