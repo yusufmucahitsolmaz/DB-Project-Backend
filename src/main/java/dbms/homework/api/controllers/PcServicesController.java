@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/pcservices")
 public class PcServicesController {
@@ -29,4 +30,10 @@ public class PcServicesController {
     public Result add(@RequestBody PcService pcService){
         return this.pcServiceService.add(pcService);
     }
+
+    @GetMapping("/getAllActiveComputerList")
+    public DataResult<List<PcService>> getAllServiceFinishedComputerList(){
+        return this.pcServiceService.getAllServiceFinishedComputerList();
+    }
+
 }

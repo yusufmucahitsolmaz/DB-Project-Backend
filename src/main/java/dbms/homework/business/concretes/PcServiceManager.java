@@ -33,4 +33,9 @@ public class PcServiceManager implements PcServiceService {
         this.pcServiceDao.save(pcService);
         return new SuccessResult("Veri eklendi.");
     }
+
+    @Override
+    public DataResult<List<PcService>> getAllServiceFinishedComputerList() {
+        return new SuccessDataResult<List<PcService>>(this.pcServiceDao.getAllServiceFinishedComputerList());
+    }
 }

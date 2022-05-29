@@ -11,4 +11,7 @@ public interface PcServiceService {
 
     DataResult<List<PcService>> getAll();
 
-    Result add (PcService pcService);}
+    Result add(PcService pcService);
+
+    DataResult<List<PcService>> getAllServiceFinishedComputerList();
+}
